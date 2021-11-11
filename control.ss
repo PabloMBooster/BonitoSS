@@ -12,7 +12,7 @@
 #_Cond 1 #_Platoon_between/within_stdev_ratio (no read if N_platoons=1)
 #_Cond  1 #vector_platoon_dist_(-1_in_first_val_gives_normal_approx)
 #
-2 # recr_dist_method for parameters:  2=main effects for GP, Area, Settle timing; 3=each Settle entity; 4=none (only when N_GP*Nsettle*pop==1)
+4 # recr_dist_method for parameters:  2=main effects for GP, Area, Settle timing; 3=each Settle entity; 4=none (only when N_GP*Nsettle*pop==1)
 1 # not yet implemented; Future usage: Spawner-Recruitment: 1=global; 2=by area
 1 #  number of recruitment settlement assignments 
 0 # unused option
@@ -49,7 +49,7 @@
   #_no additional input for selected M option; read 1P per morph
 #
 1 # GrowthModel: 1=vonBert with L1&L2; 2=Richards with L1&L2; 3=age_specific_K_incr; 4=age_specific_K_decr; 5=age_specific_K_each; 6=NA; 7=NA; 8=growth cessation
-0 #_Age(post-settlement)_for_L1;linear growth below this
+1 #_Age(post-settlement)_for_L1;linear growth below this
 999 #_Growth_Age_for_L2 (999 to use as Linf)
 -999 #_exponential decay for growth above maxage (value should approx initial Z; -999 replicates 3.24; -998 to not allow growth above maxage)
 0  #_placeholder for future growth feature
@@ -66,13 +66,13 @@
 #_growth_parms
 #_ LO HI INIT PRIOR PR_SD PR_type PHASE env_var&link dev_link dev_minyr dev_maxyr dev_PH Block Block_Fxn
 # Sex: 1  BioPattern: 1  NatMort
- 0.05 0.9 0.45 0.1 0.8 0 -3 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
+ 0.05 0.9 0.5 0.1 0.8 0 -3 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
 # Sex: 1  BioPattern: 1  Growth
- -10 45 16.8 18 10 6 -3 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
- 40 90 73.3 70 10 6 -3 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
- 0.05 0.9 0.33 0.15 0.8 6 -3 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
- 0.05 0.25 0.1 0.1 0.8 0 -3 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
- 0.05 0.25 0.1 0.1 0.8 0 -3 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
+ 0    30   5    5    10  0 3 0 0 0 0 0 0 0 # L_at_A1_Fem_GP_1
+ 40   90   77   70   10  0 3 0 0 0 0 0 0 0 # L_at_A2_Fem_GP_1
+ 0.05 0.9  0.45 0.15 0.8 0 3 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
+ 0.01 0.30 0.15 0.1  0.8 0 3 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
+ 0.001 0.35 0.05 0.1  0.8 0 3 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
 # Sex: 1  BioPattern: 1  WtLen
  -3 3 8.7e-006 0 0.8 0 -3 0 0 0 0 0 0 0 # Wtlen_1_Fem_GP_1
  -3 4 3.1125 3.1125 0.8 0 -3 0 0 0 0 0 0 0 # Wtlen_2_Fem_GP_1
@@ -83,9 +83,9 @@
  -3 3 0 0 0.8 0 -3 0 0 0 0 0 0 0 # Eggs/kg_slope_wt_Fem_GP_1
 # Hermaphroditism
 #  Recruitment Distribution  
- 0 0 0 0 0 0 -4 0 0 0 0 0 0 0 # RecrDist_GP_1
- 0 0 0 0 0 0 -4 0 0 0 0 0 0 0 # RecrDist_Area_1
- 0 0 0 0 0 0 -4 0 0 0 0 0 0 0 # RecrDist_month_1
+# 0 0 0 0 0 0 -4 0 0 0 0 0 0 0 # RecrDist_GP_1
+# 0 0 0 0 0 0 -4 0 0 0 0 0 0 0 # RecrDist_Area_1
+# 0 0 0 0 0 0 -4 0 0 0 0 0 0 0 # RecrDist_month_1
 #  Cohort growth dev base
  0.1 10 1 1 1 0 -1 0 0 0 0 0 0 0 # CohortGrowDev
 #  Movement
@@ -105,8 +105,8 @@
 0  # 0/1 to use steepness in initial equ recruitment calculation
 0  #  future feature:  0/1 to make realized sigmaR a function of SR curvature
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type      PHASE    env-var    use_dev   dev_mnyr   dev_mxyr     dev_PH      Block    Blk_Fxn #  parm_name
-             3            31             8             10.3          10            0          1          0          0          0          0          0          0          0 # SR_LN(R0)
-           0.2             1             0.85          0.7           0.05          1         -4          0          0          0          0          0          0          0 # SR_BH_steep
+             3            31             12             10.3          10            0          1          0          0          0          0          0          0          0 # SR_LN(R0)
+           0.2             1             1          0.7           0.05          1         -4          0          0          0          0          0          0          0 # SR_BH_steep
              -5             2             0.7           0.8           0.8           0         -4          0          0          0          0          0          0          0 # SR_sigmaR
                -5             5             0             0             1             0         -4          0          0          0          0          0          0          0 # SR_regime
           0             0             0             0             0             0        -99          0          0          0          0          0          0          0 # SR_autocorr
@@ -120,11 +120,11 @@
  -4 #_recdev_early_phase
  0 #_forecast_recruitment phase (incl. late recr) (0 value resets to maxphase+1)
  1 #_lambda for Fcast_recr_like occurring before endyr+1
-1958.8   #_last_early_yr_nobias_adj_in_MPD 
-1959.1   #_first_yr_fullbias_adj_in_MPD 
-2019.1   #_last_yr_fullbias_adj_in_MPD 
-2019.8   #_first_recent_yr_nobias_adj_in_MPD 
-0.3993   #_max_bias_adj_in_MPD (1.0 to mimic pre-2009 models)    
+1952.6   #_last_early_yr_nobias_adj_in_MPD 
+1959.0   #_first_yr_fullbias_adj_in_MPD 
+2017.9   #_last_yr_fullbias_adj_in_MPD 
+2018.0   #_first_recent_yr_nobias_adj_in_MPD 
+0.5048   #_max_bias_adj_in_MPD (1.0 to mimic pre-2009 models)    
 0 #_period of cycles in recruitment (N parms read below)
  -5 #min rec_dev
  5 #max rec_dev
@@ -224,7 +224,7 @@
             5           100            38            50           0.01          0           2          0          0          0          0          0          0          0  #  Size_inflection_INDUSTRIAL(1)
             0           100            11            15           0.01          0           2          0          0          0          0          0          0          0  #  Size_95%width_INDUSTRIAL(1)
 # 2   ARTESANAL LenSelex
-           -30          77.5       51.6672            40             1          0          2          0          0          0          0        0.5          0          0  #  Size_DblN_peak_ARTESANAL(2)
+           10          77.5       51.6672            40             1          0          2          0          0          0          0        0.5          0          0  #  Size_DblN_peak_ARTESANAL(2)
            -30            10      -16.3931           0.6             1          0         -3          0          0          0          0        0.5          0          0  #  Size_DblN_top_logit_ARTESANAL(2)
             -4            20        3               5.808            1          0          2          0          0          0          0        0.5          0          0  #  Size_DblN_ascend_se_ARTESANAL(2)
             -2            12        10              5.72             1          0          3          0          0          0          0        0.5          0          0  #  Size_DblN_descend_se_ARTESANAL(2)
@@ -253,8 +253,8 @@
  #_6=mult_by_size-at-age_N
  #_7=mult_by_generalized_sizecomp
 #_Factor  Fleet  Value
-4 1 0.0754694 # 0.01 # PARA QUE SIRVE
-4 2 0.3098130 # 0.01
+4 1 0.144471 # 0.0770764 # PARA QUE SIRVE
+4 2 0.368101 # 0.01
  -9999   1    0  # terminator
 #
 4 #_maxlambdaphase

@@ -15,9 +15,9 @@
 1 #_Nseas
 12 #_months/season
 2 #_Nsubseasons (even number, minimum is 2)
-1 #_spawn_month
+11 #_spawn_month
 1 #_Ngenders: 1, 2, -1  (use -1 for 1 sex setup with SSB multiplied by female_frac parameter)
-10 #_Nages=accumulator age, first age is always age 0 plus group
+12 #_Nages=accumulator age, first age is always age 0 plus group
 1 #_Nareas
 2 #_Nfleets (including surveys)
 #_fleet_type: 1=catch fleet; 2=bycatch only fleet; 3=survey; 4=ignore 
@@ -137,7 +137,7 @@
 # 4 1 0 0 # SURVEY2
 #_yr month fleet obs stderr
 1962    6   1   4.24 0.3
-1963    6   1   5.28 0.3
+1963    6   1   5.80 0.3
 1964    6   1   3.66 0.3
 1965    6   1   5.12 0.3
 1966    6   1   4.40 0.3
@@ -187,7 +187,7 @@
 2 # length bin method: 1=use databins; 2=generate from binwidth,min,max below; 3=read vector # -- ><> no cambio
 1 # binwidth for population size comp # -- ><> cambio a 3 a 2
 2 # minimum size in the population (lower edge of first bin and size at age 0.00) 
-85 # maximum size in the population (lower edge of last bin) ### cambio  
+90 # maximum size in the population (lower edge of last bin) ### cambio  
 1 # use length composition data (0/1) 0 no leer 1 si leer matrix de tallas -- ><> 1
 #_mintailcomp: upper and lower distribution for females and males separately are accumulated until exceeding this level.
 #_addtocomp:  after accumulation of tails; this value added to all bins
@@ -255,11 +255,11 @@
 2019    6   2   0   0   440.51  0   0   0   0   0   0   0   39  133 426 612 1348    1618    1724    5287    5661    3753    6140    8812    6677    1607    200 12  2   0   0
 -9999	0	0	0	0	0	    0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
 #
-10 #_N_age_bins
-1 2 3 4 5 6 7 8 9 10 
-0 #_N_ageerror_definitions  Error
-#-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
-#0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001
+12 #_N_age_bins
+1 2 3 4 5 6 7 8 9 10 11 12
+1 #_N_ageerror_definitions  Error
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001
 #_mintailcomp: upper and lower distribution for females and males separately are accumulated until exceeding this level.
 #_addtocomp:  after accumulation of tails; this value added to all bins
 #_males and females treated as combined gender below this bin number 
@@ -275,25 +275,25 @@
 # sex codes:  0=combined; 1=use female only; 2=use male only; 3=use both as joint sexxlength distribution
 # partition codes:  (0=combined; 1=discard; 2=retained
 #_yr month fleet sex part ageerr Lbin_lo Lbin_hi Nsamp datavector(female-male)
-#1992    6   2   0   0   0   26  26  3   3   0   0   0   0   0   0   0   0   0
-#1992    6   2   0   0   0   29  29  6   6   0   0   0   0   0   0   0   0   0
-#1992    6   2   0   0   0   32  32  1   1   0   0   0   0   0   0   0   0   0
-##1992    6   2   0   0   0  35  35  2   1   1   0   0   0   0   0   0   0   0
-#1992    6   2   0   0   0   38  38  39  4   35  0   0   0   0   0   0   0   0
-#1992    6   2   0   0   0   41  41  156 0   156 0   0   0   0   0   0   0   0
-#1992    6   2   0   0   0   44  44  115 0   105 10  0   0   0   0   0   0   0
-#1992    6   2   0   0   0   47  47  24  0   11  13  0   0   0   0   0   0   0
-#1992    6   2   0   0   0   50  50  77  0   10  61  6   0   0   0   0   0   0
-#1992    6   2   0   0   0   53  53  181 0   5   139 37  0   0   0   0   0   0
-#1992    6   2   0   0   0   56  56  188 0   0   75  104 9   0   0   0   0   0
-#1992    6   2   0   0   0   59  59  85  0   0   5   54  24  2   0   0   0   0
-#1992    6   2   0   0   0   62  62  25  0   0   0   10  11  4   0   0   0   0
-#1992    6   2   0   0   0   65  65  5   0   0   0   0   2   3   0   0   0   0
-#1992    6   2   0   0   0   68  68  1   0   0   0   0   0   1   0   0   0   0
-#1992    6   2   0   0   0   71  71  0   0   0   0   0   0   0   0   0   0   0
-#1992    6   2   0   0   0   74  74  0   0   0   0   0   0   0   0   0   0   0
-#1992    6   2   0   0   0   77  77  0   0   0   0   0   0   0   0   0   0   0
--9999    6   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+1992    6   2   0   0   1   26  26  3   3   0   0   0   0   0   0   0   0   0   0   0
+1992    6   2   0   0   1   29  29  6   6   0   0   0   0   0   0   0   0   0   0   0
+1992    6   2   0   0   1   32  32  1   1   0   0   0   0   0   0   0   0   0   0   0
+1992    6   2   0   0   1   35  35  2   1   1   0   0   0   0   0   0   0   0   0   0
+1992    6   2   0   0   1   38  38  39  4   35  0   0   0   0   0   0   0   0   0   0
+1992    6   2   0   0   1   41  41  156 0   156 0   0   0   0   0   0   0   0   0   0
+1992    6   2   0   0   1   44  44  115 0   105 10  0   0   0   0   0   0   0   0   0
+1992    6   2   0   0   1   47  47  24  0   11  13  0   0   0   0   0   0   0   0   0
+1992    6   2   0   0   1   50  50  77  0   10  61  6   0   0   0   0   0   0   0   0
+1992    6   2   0   0   1   53  53  181 0   5   139 37  0   0   0   0   0   0   0   0
+1992    6   2   0   0   1   56  56  188 0   0   75  104 9   0   0   0   0   0   0   0
+1992    6   2   0   0   1   59  59  85  0   0   5   54  24  2   0   0   0   0   0   0
+1992    6   2   0   0   1   62  62  25  0   0   0   10  11  4   0   0   0   0   0   0
+1992    6   2   0   0   1   65  65  5   0   0   0   0   2   3   0   0   0   0   0   0
+1992    6   2   0   0   1   68  68  1   0   0   0   0   0   1   0   0   0   0   0   0
+#1992   6   2   0   0   1   71  71  0   0   0   0   0   0   0   0   0   0   0   0   0
+#1992   6   2   0   0   1   74  74  0   0   0   0   0   0   0   0   0   0   0   0   0
+#1992   6   2   0   0   1   77  77  0   0   0   0   0   0   0   0   0   0   0   0   0
+-9999   6   0   0   0   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
 #
 0 #_Use_MeanSize-at-Age_obs (0/1)
 # sex codes:  0=combined; 1=use female only; 2=use male only; 3=use both as joint sexxlength distribution
